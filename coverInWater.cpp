@@ -14,40 +14,22 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-
-        int ans = 0;
-        int count = 0;
-
-        for (char c : s)
-        {
-            if (c == '.')
-            {
-                count++;
-            }
-            else
-            {
-                if (count == 1 || count == 2)
-                {
-                    ans += count;
-                }
-                else if (count >= 3)
-                {
-                    ans += 2;
-                }
-                count = 0;
+        bool flag = false;
+        for(int i = 0 ; i+2 < n ; i++){
+            if(s[i] == '.' && s[i+1] == '.' && s[i+2] == '.'){
+                flag=true;
+                break;
             }
         }
-
-        if (count == 1 || count == 2)
-        {
-            ans += count;
-        }
-        else if (count >= 3)
-        {
-            ans += 2;
-        }
-
-        cout << ans << '\n';
+        if(flag)
+            cout << 2 << endl;
+        else{
+            int count = 0;
+            for(int i = 0 ; i < n ; i++){
+                if(s[i] == '.') count++;
+            }
+            cout << count << endl;
+        }    
     }
     return 0;
 }

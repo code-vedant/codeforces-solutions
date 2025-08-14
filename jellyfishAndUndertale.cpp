@@ -10,32 +10,19 @@ int main() {
     int t; 
     cin >> t;
     while (t--) {
-        long long a, b;
-        int n;
+        long long a, b, n;
         cin >> a >> b >> n;
 
-        vector<long long> tools(n);
+        long long ans = b;
+
         for (int i = 0; i < n; i++) {
-            cin >> tools[i];
+            long long x;
+            cin >> x;
+            ans += min(a-1,x);
         }
 
-        sort(tools.rbegin(), tools.rend());
+        cout << ans << "\n";
 
-        long long timer = b;
-        long long time = 0;
-        int index = 0;
-
-        while (timer > 0) {
-            time++;
-
-            if (index < n && timer < a) {
-                timer = min(a, timer + tools[index]);
-                index++;
-            }
-            timer--;
-        }
-
-        cout << time << "\n";
     }
 
     return 0;
